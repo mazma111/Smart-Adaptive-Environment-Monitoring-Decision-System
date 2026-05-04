@@ -1,6 +1,6 @@
 # Smart Adaptive Environment Monitoring & Decision System
 
-An intelligent IoT and AI-driven framework designed to monitor environmental conditions, learn complex patterns, and execute autonomous decisions based on real-time sensor data, as outlined in **Scenario 1.pdf**.
+An intelligent IoT and AI-driven framework designed to monitor environmental conditions, learn complex patterns, and execute autonomous decisions based on real-time sensor data.
 
 ---
 
