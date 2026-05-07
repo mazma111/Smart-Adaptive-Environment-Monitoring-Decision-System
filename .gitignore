@@ -1,6 +1,4 @@
-# ==========================================
 # Python Environment & Caches
-# ==========================================
 __pycache__/
 *.pyc
 *.pyo
@@ -11,18 +9,14 @@ venv/
 .venv/
 pip-log.txt
 
-# ==========================================
 # Project-Specific Data (IoT & Sensors)
-# ==========================================
 # Ignore large generated data streams 
 data/raw_sensor_stream.csv
 
 # DO NOT ignore the topology graph - the GNN needs this [cite: 32, 33]
 !data/topology_graph.json
 
-# ==========================================
 # AI Model Weights & Checkpoints
-# ==========================================
 # Ignore heavy trained weights for RBF, GNN, and RL 
 *.pth
 *.pt
@@ -31,9 +25,7 @@ data/raw_sensor_stream.csv
 *.joblib
 .ipynb_checkpoints/
 
-# ==========================================
 # Operating System & IDEs
-# ==========================================
 # Windows
 Thumbs.db
 Desktop.ini
