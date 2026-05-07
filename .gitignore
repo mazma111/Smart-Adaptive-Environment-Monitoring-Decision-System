@@ -13,7 +13,7 @@ pip-log.txt
 # Ignore large generated data streams 
 data/raw_sensor_stream.csv
 
-# DO NOT ignore the topology graph - the GNN needs this [cite: 32, 33]
+# DO NOT ignore the topology graph - the GNN needs it
 !data/topology_graph.json
 
 # AI Model Weights & Checkpoints
