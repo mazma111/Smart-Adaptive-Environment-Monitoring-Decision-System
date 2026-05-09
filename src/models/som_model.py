@@ -55,29 +55,80 @@ print("SOM Training Completed!\n")
 
 clusters = []
 
+# تخزين الداتا الخاصة بكل cluster
+cluster_data = {}
+
+for row in data:
+
+    winner = som.winner(row)
+
+    clusters.append(winner)
+
+    if winner not in cluster_data:
+
+        cluster_data[winner] = []
+
+    cluster_data[winner].append(row)
+
+# =========================
+# CALCULATE CLUSTER CENTROIDS
+# =========================
+
+cluster_scores = {}
+
+for cluster, values in cluster_data.items():
+
+    values = pd.DataFrame(values)
+
+    # متوسط القيم داخل كل cluster
+    centroid = values.mean()
+
+    # score عام لتحديد مستوى الخطورة
+    score = centroid.mean()
+
+    cluster_scores[cluster] = score
+
+# =========================
+# SORT CLUSTERS BY RISK
+# =========================
+
+sorted_clusters = sorted(
+    cluster_scores.items(),
+    key=lambda x: x[1]
+)
+
+# =========================
+# DYNAMIC LABELING
+# =========================
+
+state_mapping = {}
+
+labels = [
+    "Normal",
+    "Warning",
+    "Dangerous"
+]
+
+for i, (cluster, _) in enumerate(sorted_clusters):
+
+    if i < len(labels):
+
+        state_mapping[cluster] = labels[i]
+
+# =========================
+# ASSIGN STATES
+# =========================
+
 states = []
 
 for i, row in enumerate(data):
 
     winner = som.winner(row)
 
-    clusters.append(winner)
-
-    # -------------------------
-    # Example State Mapping
-    # -------------------------
-
-    if winner == (0, 0):
-
-        state = "Normal"
-
-    elif winner == (0, 1):
-
-        state = "Warning"
-
-    else:
-
-        state = "Dangerous"
+    state = state_mapping.get(
+        winner,
+        "Unknown"
+    )
 
     states.append(state)
 
@@ -89,7 +140,10 @@ for i, row in enumerate(data):
 # SAVE RESULTS
 # =========================
 
-results_df = pd.DataFrame(data, columns=["PC1", "PC2"])
+results_df = pd.DataFrame(
+    data,
+    columns=["PC1", "PC2"]
+)
 
 results_df["Cluster"] = clusters
 
