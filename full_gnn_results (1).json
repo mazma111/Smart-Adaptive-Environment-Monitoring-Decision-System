@@ -1,0 +1,77 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "name": "temp_sensor_1",
+            "type": "temperature"
+        },
+        {
+            "id": 1,
+            "name": "humidity_sensor_1",
+            "type": "humidity"
+        },
+        {
+            "id": 2,
+            "name": "gas_sensor_1",
+            "type": "gas"
+        },
+        {
+            "id": 3,
+            "name": "light_sensor_1",
+            "type": "light"
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1,
+            "distance_meters": 0.5
+        },
+        {
+            "source": 0,
+            "target": 2,
+            "distance_meters": 1.2
+        },
+        {
+            "source": 1,
+            "target": 2,
+            "distance_meters": 1.0
+        },
+        {
+            "source": 2,
+            "target": 3,
+            "distance_meters": 4.5
+        }
+    ],
+    "predictions": [
+        {
+            "node_id": 0,
+            "sensor_name": "temp_sensor_1",
+            "sensor_type": "temperature",
+            "predicted_label": 0,
+            "true_label": 0
+        },
+        {
+            "node_id": 1,
+            "sensor_name": "humidity_sensor_1",
+            "sensor_type": "humidity",
+            "predicted_label": 0,
+            "true_label": 1
+        },
+        {
+            "node_id": 2,
+            "sensor_name": "gas_sensor_1",
+            "sensor_type": "gas",
+            "predicted_label": 2,
+            "true_label": 2
+        },
+        {
+            "node_id": 3,
+            "sensor_name": "light_sensor_1",
+            "sensor_type": "light",
+            "predicted_label": 3,
+            "true_label": 3
+        }
+    ],
+    "final_accuracy": 0.75
+}
